@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Card {
+  id        String   @id @default(uuid())
+  userId    String
+  profile   Json     @default("{}")
+  business  Json     @default("{}")
+  social    Json     @default("{}")
+  about     Json     @default("{}")
+  cta       Json     @default("{}")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
